@@ -36,6 +36,12 @@
       "pre-commit": "lint-staged"
     }
   },
+  "keywords": [
+    "file",
+    "parse",
+    "ski tracks",
+    "skiz"
+  ],
   "license": "BSD-3-Clause",
   "lint-staged": {
     "*.{ts,tsx,json,md}": "prettier --write"

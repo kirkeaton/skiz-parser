@@ -46,6 +46,11 @@
     "tabWidth": 2,
     "trailingComma": "es5"
   },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"

@@ -1,5 +1,5 @@
 import csv from 'csv-parser';
-import xmlParser, { parse } from 'fast-xml-parser';
+import xmlParser from 'fast-xml-parser';
 import { promisify } from 'util';
 import yauzl from 'yauzl';
 
@@ -60,8 +60,26 @@ const parseSegmentCsvFile = (readStream) => {
         trackSegments.push({
           startTime: new Date(parseFloat(values[0]) * 1000),
           endTime: new Date(parseFloat(values[1]) * 1000),
+          number: parseInt(values[4], 10),
           name: values[5],
+          comment: values[6],
           type: values[7],
+          category: values[8],
+          link: values[9],
+          uuid: values[10],
+          metrics: {
+            time: parseFloat(values[11]),
+            speed: parseFloat(values[12]),
+            distance: parseFloat(values[13]),
+            vertical: parseFloat(values[14]),
+            maxSpeed: parseFloat(values[15]),
+            slope: parseFloat(values[16]),
+            maxSlope: parseFloat(values[17]),
+            minAltitude: parseFloat(values[18]),
+            maxAltitude: parseFloat(values[19]),
+            startAltitude: parseFloat(values[20]),
+            finishAltitude: parseFloat(values[21]),
+          },
         });
       })
       .once('end', () => {

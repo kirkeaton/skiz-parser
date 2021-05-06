@@ -1,5 +1,5 @@
 import csv from 'csv-parser';
-import xmlParser from 'fast-xml-parser';
+import xmlParser, { parse } from 'fast-xml-parser';
 import { promisify } from 'util';
 import yauzl from 'yauzl';
 
@@ -132,6 +132,25 @@ const parseTrackXmlFile = async (readStream) => {
   };
 };
 
+const parseEventsXmlFile = async (readStream) => {
+  const options = {
+    attributeNamePrefix: '',
+    ignoreAttributes: false,
+  };
+
+  const buffer = await convertReadStreamToBuffer(readStream);
+  const parsed = xmlParser.parse(buffer.toString('utf-8'), options);
+
+  const events = parsed.events.event || [];
+  const trackEvents = events.map((event) => ({
+    start: new Date(Date.parse(event.start)),
+    end: new Date(Date.parse(event.end)),
+    type: event.type,
+  }));
+
+  return { trackEvents };
+};
+
 export const parseSkizFile = async (file) => {
   let data = {};
 
@@ -146,7 +165,7 @@ export const parseSkizFile = async (file) => {
       .on('error', reject)
       .on('entry', async (entry) => {
         if (
-          !['Nodes.csv', 'Segment.csv', 'Track.xml'].includes(entry.fileName)
+          !['Events.xml', 'Nodes.csv', 'Segment.csv', 'Track.xml'].includes(entry.fileName)
         ) {
           return zipFile.readEntry();
         }
@@ -154,7 +173,9 @@ export const parseSkizFile = async (file) => {
         const readStream = await openReadStream(entry);
 
         let result;
-        if (entry.fileName === 'Nodes.csv') {
+        if (entry.fileName === 'Events.xml') {
+          result = await parseEventsXmlFile(readStream);
+        } else if (entry.fileName === 'Nodes.csv') {
           result = await parseNodeCsvFile(readStream);
         } else if (entry.fileName === 'Segment.csv') {
           result = await parseSegmentCsvFile(readStream);

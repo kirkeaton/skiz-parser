@@ -13,11 +13,13 @@ test('should parse .skiz file', async (t) => {
   const file = await fsAsync.readFile('./example.skiz');
   const result = await parseSkizFile(file);
 
-  t.is(result.name, 'Day 1 - 2018/2019');
+  t.is(result.name, 'Day 15 - 2020/2021');
   t.is(result.activity, 'skiing');
   t.truthy(result.trackMetrics);
+  t.truthy(result.trackEvents);
   t.truthy(result.trackSegments);
   t.truthy(result.trackNodes);
+  t.truthy(result.trackEvents.length);
   t.truthy(result.trackSegments.length);
   t.truthy(result.trackNodes.length);
 });

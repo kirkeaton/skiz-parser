@@ -23,12 +23,20 @@ console.log(result);
 
 ## API
 
-### parseSkizFile(file)
+### parseSkizFile(file, callback?)
 
 Returns a `Promise<object>` with the parsed .skiz file.
+
+Optionally a callback function may be used instead.
 
 #### file
 
 Type: `Buffer`
 
 Contents of a `.skiz` file.
+
+#### callback
+
+Type: `Function`
+
+Optional callback with error as the first argument and the parsed .skiz file as the second.

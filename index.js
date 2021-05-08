@@ -3,8 +3,6 @@ import xmlParser from 'fast-xml-parser';
 import { promisify } from 'util';
 import yauzl from 'yauzl';
 
-const yauzlFromBuffer = promisify(yauzl.fromBuffer);
-
 const convertReadStreamToBuffer = (readStream) => {
   return new Promise((resolve, reject) => {
     const chunks = [];
@@ -169,44 +167,54 @@ const parseEventsXmlFile = async (readStream) => {
   return { trackEvents };
 };
 
-export const parseSkizFile = async (file) => {
-  let data = {};
+export const parseSkizFile = (file, callback) => {
+  const parse = (resolve, reject) => {
+    yauzl.fromBuffer(file, { lazyEntries: true }, (err, zipFile) => {
+      if (err) {
+        return reject(err);
+      }
 
-  const zipFile = await yauzlFromBuffer(file, { lazyEntries: true });
+      let data = {};
 
-  const openReadStream = promisify(zipFile.openReadStream.bind(zipFile));
+      const openReadStream = promisify(zipFile.openReadStream.bind(zipFile));
 
-  zipFile.readEntry();
+      zipFile.readEntry();
 
-  return new Promise(async (resolve, reject) => {
-    zipFile
-      .on('error', reject)
-      .on('entry', async (entry) => {
-        if (
-          !['Events.xml', 'Nodes.csv', 'Segment.csv', 'Track.xml'].includes(entry.fileName)
-        ) {
-          return zipFile.readEntry();
-        }
+      zipFile
+        .on('error', reject)
+        .on('entry', async (entry) => {
+          if (
+            !['Events.xml', 'Nodes.csv', 'Segment.csv', 'Track.xml'].includes(
+              entry.fileName
+            )
+          ) {
+            return zipFile.readEntry();
+          }
 
-        const readStream = await openReadStream(entry);
+          const readStream = await openReadStream(entry);
 
-        let result;
-        if (entry.fileName === 'Events.xml') {
-          result = await parseEventsXmlFile(readStream);
-        } else if (entry.fileName === 'Nodes.csv') {
-          result = await parseNodeCsvFile(readStream);
-        } else if (entry.fileName === 'Segment.csv') {
-          result = await parseSegmentCsvFile(readStream);
-        } else if (entry.fileName === 'Track.xml') {
-          result = await parseTrackXmlFile(readStream);
-        }
+          let result;
+          if (entry.fileName === 'Events.xml') {
+            result = await parseEventsXmlFile(readStream);
+          } else if (entry.fileName === 'Nodes.csv') {
+            result = await parseNodeCsvFile(readStream);
+          } else if (entry.fileName === 'Segment.csv') {
+            result = await parseSegmentCsvFile(readStream);
+          } else if (entry.fileName === 'Track.xml') {
+            result = await parseTrackXmlFile(readStream);
+          }
 
-        data = { ...data, ...result };
+          data = { ...data, ...result };
 
-        zipFile.readEntry();
-      })
-      .once('end', () => {
-        resolve(data);
-      });
-  });
+          zipFile.readEntry();
+        })
+        .once('end', () => {
+          resolve(data);
+        });
+    });
+  };
+
+  return typeof callback === 'function'
+    ? parse(callback.bind(null, undefined), callback)
+    : new Promise(parse);
 };

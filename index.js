@@ -167,9 +167,13 @@ const parseEventsXmlFile = async (readStream) => {
   return { trackEvents };
 };
 
-export const parseSkizFile = (file, callback) => {
+export const parseSkizFile = (contents, callback) => {
   const parse = (resolve, reject) => {
-    yauzl.fromBuffer(file, { lazyEntries: true }, (err, zipFile) => {
+    if (contents instanceof ArrayBuffer) {
+      contents = Buffer.from(contents);
+    }
+
+    yauzl.fromBuffer(contents, { lazyEntries: true }, (err, zipFile) => {
       if (err) {
         return reject(err);
       }

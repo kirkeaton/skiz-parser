@@ -14,8 +14,8 @@ $ npm install skiz-parser
 import { promises as fsAsync } from 'fs';
 import { parseSkizFile } from 'skiz-parser';
 
-const file = await fsAsync.readFile('./example.skiz');
-const result = await parseSkizFile(file);
+const contents = await fsAsync.readFile('./example.skiz');
+const result = await parseSkizFile(contents);
 
 console.log(result);
 //=> { name: 'Day 1 - 2018/2019', … }
@@ -23,13 +23,13 @@ console.log(result);
 
 ## API
 
-### parseSkizFile(file, callback?)
+### parseSkizFile(contents, callback?)
 
 Returns a `Promise<object>` with the parsed .skiz file.
 
 Optionally a callback function may be used instead.
 
-#### file
+#### contents
 
 Type: `Buffer`
 

@@ -44,7 +44,7 @@
   ],
   "license": "BSD-3-Clause",
   "lint-staged": {
-    "*.{ts,tsx,json,md}": "prettier --write"
+    "*.{js,json,md}": "prettier --write"
   },
   "prettier": {
     "printWidth": 80,

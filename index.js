@@ -18,6 +18,28 @@ const convertReadStreamToBuffer = (readStream) => {
   });
 };
 
+const parseBatteryCsvFile = (readStream) => {
+  return new Promise((resolve, reject) => {
+    const batteryUsage = [];
+
+    readStream
+      .pipe(csv({ headers: false }))
+      .on('error', reject)
+      .on('data', (data) => {
+        const values = Object.values(data);
+
+        batteryUsage.push({
+          timestamp: new Date(values[0]),
+          status: values[1],
+          level: parseFloat(values[2]),
+        });
+      })
+      .once('end', () => {
+        resolve({ batteryUsage });
+      });
+  });
+};
+
 const parseNodeCsvFile = (readStream) => {
   return new Promise((resolve, reject) => {
     const trackNodes = [];
@@ -188,9 +210,13 @@ export const parseSkizFile = (contents, callback) => {
         .on('error', reject)
         .on('entry', async (entry) => {
           if (
-            !['Events.xml', 'Nodes.csv', 'Segment.csv', 'Track.xml'].includes(
-              entry.fileName
-            )
+            ![
+              'Battery.csv',
+              'Events.xml',
+              'Nodes.csv',
+              'Segment.csv',
+              'Track.xml',
+            ].includes(entry.fileName)
           ) {
             return zipFile.readEntry();
           }
@@ -198,7 +224,9 @@ export const parseSkizFile = (contents, callback) => {
           const readStream = await openReadStream(entry);
 
           let result;
-          if (entry.fileName === 'Events.xml') {
+          if (entry.fileName === 'Battery.csv') {
+            result = await parseBatteryCsvFile(readStream);
+          } else if (entry.fileName === 'Events.xml') {
             result = await parseEventsXmlFile(readStream);
           } else if (entry.fileName === 'Nodes.csv') {
             result = await parseNodeCsvFile(readStream);

@@ -6,10 +6,10 @@ import { fileURLToPath } from 'url';
 import { parseSkizFile } from '../index.js';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-process.chdir(dirname);
+const filename = path.join(dirname, 'example.skiz');
 
 test('should parse .skiz file using promises', async (t) => {
-  const file = await fsAsync.readFile('./example.skiz');
+  const file = await fsAsync.readFile(filename);
   const result = await parseSkizFile(file);
 
   t.is(result.name, 'Day 15 - 2020/2021');
@@ -25,7 +25,7 @@ test('should parse .skiz file using promises', async (t) => {
 });
 
 test('should parse .skiz file using callback', async (t) => {
-  const file = await fsAsync.readFile('./example.skiz');
+  const file = await fsAsync.readFile(filename);
   return new Promise((resolve, reject) => {
     parseSkizFile(file, (err, result) => {
       if (err) {

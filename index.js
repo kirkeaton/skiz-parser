@@ -1,7 +1,12 @@
 import csv from 'csv-parser';
-import xmlParser from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
 import { promisify } from 'util';
 import yauzl from 'yauzl';
+
+const parser = new XMLParser({
+  attributeNamePrefix: '',
+  ignoreAttributes: false,
+});
 
 const convertReadStreamToBuffer = (readStream) => {
   return new Promise((resolve, reject) => {
@@ -109,13 +114,8 @@ const parseSegmentCsvFile = (readStream) => {
 };
 
 const parseTrackXmlFile = async (readStream) => {
-  const options = {
-    attributeNamePrefix: '',
-    ignoreAttributes: false,
-  };
-
   const buffer = await convertReadStreamToBuffer(readStream);
-  const parsed = xmlParser.parse(buffer.toString('utf-8'), options);
+  const parsed = parser.parse(buffer.toString('utf-8'));
 
   const track = parsed.track;
   const metrics = track.metrics;
@@ -171,13 +171,8 @@ const parseTrackXmlFile = async (readStream) => {
 };
 
 const parseEventsXmlFile = async (readStream) => {
-  const options = {
-    attributeNamePrefix: '',
-    ignoreAttributes: false,
-  };
-
   const buffer = await convertReadStreamToBuffer(readStream);
-  const parsed = xmlParser.parse(buffer.toString('utf-8'), options);
+  const parsed = parser.parse(buffer.toString('utf-8'));
 
   const events = parsed.events.event || [];
   const trackEvents = events.map((event) => ({

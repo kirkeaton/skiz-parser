@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import { parseSkizFile } from '../index.js';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const filename = path.join(dirname, 'example.skiz');
+const filename = path.join(dirname, '../example.skiz');
 
 test('should parse .skiz file using promises', async (t) => {
   const file = await fsAsync.readFile(filename);

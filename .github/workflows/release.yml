@@ -18,6 +18,8 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
           fingerprint: 'C5B15FF1A95DCBE5F37C47343175BD9C550E750B'
+          git_user_signingkey: true
+          git_tag_gpgsign: true
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:

@@ -72,6 +72,28 @@ const parseNodeCsvFile = (readStream) => {
   });
 };
 
+const parseRelativeAltitudeSensorCsvFile = (readStream) => {
+  return new Promise((resolve, reject) => {
+    const relativeAltitude = [];
+
+    readStream
+      .pipe(csv({ headers: false }))
+      .on('error', reject)
+      .on('data', (data) => {
+        const values = Object.values(data);
+
+        relativeAltitude.push({
+          timestamp: new Date(parseFloat(values[0]) * 1000.0),
+          pressure: parseFloat(values[1]),
+          relativeAltitude: parseFloat(values[2]),
+        });
+      })
+      .once('end', () => {
+        resolve({ relativeAltitude });
+      });
+  });
+};
+
 const parseSegmentCsvFile = (readStream) => {
   return new Promise((resolve, reject) => {
     const trackSegments = [];
@@ -209,6 +231,7 @@ export const parseSkizFile = (contents, callback) => {
               'Battery.csv',
               'Events.xml',
               'Nodes.csv',
+              'RelativeAltitudeSensor.csv',
               'Segment.csv',
               'Track.xml',
             ].includes(entry.fileName)
@@ -225,6 +248,8 @@ export const parseSkizFile = (contents, callback) => {
             result = await parseEventsXmlFile(readStream);
           } else if (entry.fileName === 'Nodes.csv') {
             result = await parseNodeCsvFile(readStream);
+          } else if (entry.fileName === 'RelativeAltitudeSensor.csv') {
+            result = await parseRelativeAltitudeSensorCsvFile(readStream);
           } else if (entry.fileName === 'Segment.csv') {
             result = await parseSegmentCsvFile(readStream);
           } else if (entry.fileName === 'Track.xml') {

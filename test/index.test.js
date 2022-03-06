@@ -18,10 +18,13 @@ test('should parse .skiz file using promises', async (t) => {
   t.truthy(result.trackEvents);
   t.truthy(result.trackSegments);
   t.truthy(result.trackNodes);
+  t.truthy(result.batteryUsage);
+  t.truthy(result.relativeAltitude);
   t.truthy(result.trackEvents.length);
   t.truthy(result.trackSegments.length);
   t.truthy(result.trackNodes.length);
   t.truthy(result.batteryUsage.length);
+  t.truthy(result.relativeAltitude.length);
 });
 
 test('should parse .skiz file using callback', async (t) => {
@@ -38,10 +41,13 @@ test('should parse .skiz file using callback', async (t) => {
       t.truthy(result.trackEvents);
       t.truthy(result.trackSegments);
       t.truthy(result.trackNodes);
+      t.truthy(result.batteryUsage);
+      t.truthy(result.relativeAltitude);
       t.truthy(result.trackEvents.length);
       t.truthy(result.trackSegments.length);
       t.truthy(result.trackNodes.length);
       t.truthy(result.batteryUsage.length);
+      t.truthy(result.relativeAltitude.length);
       resolve();
     });
   });

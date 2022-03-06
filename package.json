@@ -13,15 +13,17 @@
     "url": "https://github.com/kirkeaton/skiz-parser/issues"
   },
   "dependencies": {
-    "csv-parser": "^3.0.0",
-    "fast-xml-parser": "^4.0.1",
-    "yauzl": "^2.10.0"
+    "csv-parser": "3.0.0",
+    "fast-xml-parser": "4.0.1",
+    "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "ava": "^4.0.1",
-    "husky": "^7.0.0",
-    "lint-staged": "^12.1.4",
-    "prettier": "^2.2.1"
+    "ava": "4.0.1",
+    "husky": "7.0.0",
+    "lint-staged": "12.1.4",
+    "patch-package": "6.4.7",
+    "prettier": "2.2.1",
+    "semantic-release": "19.0.2"
   },
   "engines": {
     "node": ">=12"

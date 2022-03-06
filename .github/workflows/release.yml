@@ -18,6 +18,8 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm install
+      - name: Patch packages
+        run: npx patch-package
       - name: Release
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

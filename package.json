@@ -30,7 +30,8 @@
   },
   "exports": "./index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "homepage": "https://github.com/kirkeaton/skiz-parser#readme",
   "keywords": [

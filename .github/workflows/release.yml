@@ -17,6 +17,7 @@ jobs:
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          fingerprint: 'C5B15FF1A95DCBE5F37C47343175BD9C550E750B'
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:

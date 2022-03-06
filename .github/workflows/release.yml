@@ -32,4 +32,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: 'Kirk Eaton'
+          GIT_AUTHOR_EMAIL: 'contact@kirkeaton.ca'
         run: npx semantic-release

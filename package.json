@@ -21,9 +21,7 @@
     "ava": "4.1.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.7",
-    "patch-package": "6.4.7",
-    "prettier": "2.6.1",
-    "semantic-release": "19.0.2"
+    "prettier": "2.6.1"
   },
   "engines": {
     "node": ">=12"
@@ -48,11 +46,6 @@
     "singleQuote": true,
     "tabWidth": 2,
     "trailingComma": "es5"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ]
   },
   "repository": {
     "type": "git",

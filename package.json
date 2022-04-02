@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "ava": "4.1.0",
-    "husky": "7.0.0",
+    "husky": "7.0.4",
     "lint-staged": "12.3.7",
     "patch-package": "6.4.7",
     "prettier": "2.2.1",

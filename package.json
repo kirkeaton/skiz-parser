@@ -18,7 +18,7 @@
     "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "ava": "4.0.1",
+    "ava": "4.1.0",
     "husky": "7.0.0",
     "lint-staged": "12.3.7",
     "patch-package": "6.4.7",

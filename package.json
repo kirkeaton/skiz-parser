@@ -18,7 +18,7 @@
     "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "ava": "4.1.0",
+    "ava": "4.2.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.7",
     "prettier": "2.6.1",

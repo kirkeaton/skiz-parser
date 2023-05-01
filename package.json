@@ -27,7 +27,7 @@
     "tsd": "0.28.1"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "exports": "./index.js",
   "files": [

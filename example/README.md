@@ -5,7 +5,7 @@
 ## Requirements
 
 - `npm` or `yarn`
-- Node.js >= 14
+- Node.js >= 16
 
 ## Prerequisites
 

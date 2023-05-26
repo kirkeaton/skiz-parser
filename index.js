@@ -1,6 +1,5 @@
 import csv from 'csv-parser';
 import { XMLParser } from 'fast-xml-parser';
-import { promisify } from 'util';
 import yauzl from 'yauzl';
 
 const parser = new XMLParser({
@@ -20,6 +19,14 @@ const convertReadStreamToBuffer = (readStream) => {
       .once('end', () => {
         resolve(Buffer.concat(chunks));
       });
+  });
+};
+
+const openReadStream = (zipFile, entry) => {
+  return new Promise((resolve, reject) => {
+    zipFile.openReadStream(entry, (err, readStream) => {
+      err ? reject(err) : resolve(readStream);
+    });
   });
 };
 
@@ -219,8 +226,6 @@ export const parseSkizFile = (contents, callback) => {
 
       let data = {};
 
-      const openReadStream = promisify(zipFile.openReadStream.bind(zipFile));
-
       zipFile.readEntry();
 
       zipFile
@@ -239,7 +244,7 @@ export const parseSkizFile = (contents, callback) => {
             return zipFile.readEntry();
           }
 
-          const readStream = await openReadStream(entry);
+          const readStream = await openReadStream(zipFile, entry);
 
           let result;
           if (entry.fileName === 'Battery.csv') {

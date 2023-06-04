@@ -90,7 +90,7 @@ const parseRelativeAltitudeSensorCsvFile = (readStream) => {
         const values = Object.values(data);
 
         relativeAltitude.push({
-          timestamp: new Date(parseFloat(values[0]) * 1000.0),
+          timestamp: new Date(values[0]),
           pressure: parseFloat(values[1]),
           relativeAltitude: parseFloat(values[2]),
         });

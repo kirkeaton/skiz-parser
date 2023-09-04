@@ -24,7 +24,7 @@
     "lint-staged": "13.2.3",
     "prettier": "3.0.1",
     "semantic-release": "21.1.1",
-    "tsd": "0.28.1"
+    "tsd": "0.29.0"
   },
   "engines": {
     "node": ">=16"

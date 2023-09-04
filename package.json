@@ -21,7 +21,7 @@
     "@types/node": "20.5.9",
     "ava": "5.3.1",
     "husky": "8.0.3",
-    "lint-staged": "13.2.3",
+    "lint-staged": "14.0.1",
     "prettier": "3.0.3",
     "semantic-release": "21.1.1",
     "tsd": "0.29.0"

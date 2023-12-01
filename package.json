@@ -18,7 +18,7 @@
     "yauzl": "2.10.0"
   },
   "devDependencies": {
-    "@types/node": "20.8.10",
+    "@types/node": "20.10.1",
     "ava": "5.3.1",
     "husky": "8.0.3",
     "lint-staged": "15.0.2",

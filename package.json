@@ -3,12 +3,6 @@
   "description": "Parse a .skiz file exported from Ski Tracks",
   "version": "0.0.0-development",
   "author": "Kirk Eaton <contact@kirkeaton.ca>",
-  "ava": {
-    "files": [
-      "test/**/*.test.js"
-    ],
-    "timeout": "2m"
-  },
   "bugs": {
     "url": "https://github.com/kirkeaton/skiz-parser/issues"
   },
@@ -19,7 +13,6 @@
   },
   "devDependencies": {
     "@types/node": "20.10.6",
-    "ava": "6.0.1",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "prettier": "3.1.1",
@@ -65,7 +58,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "ava -v && tsd"
+    "test": "node --test && tsd"
   },
   "type": "module"
 }

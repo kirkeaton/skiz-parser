@@ -29,7 +29,10 @@
   "engines": {
     "node": ">=18"
   },
-  "exports": "./index.js",
+  "exports": {
+    "types": "./index.d.ts",
+    "default": "./index.js"
+  },
   "files": [
     "index.js",
     "index.d.ts"
@@ -64,6 +67,5 @@
     "prepare": "husky install",
     "test": "ava -v && tsd"
   },
-  "type": "module",
-  "types": "./index.d.ts"
+  "type": "module"
 }

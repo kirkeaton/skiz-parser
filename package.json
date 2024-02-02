@@ -57,7 +57,7 @@
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "test": "node --test && tsd"
   },
   "type": "module"

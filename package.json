@@ -9,7 +9,7 @@
   "dependencies": {
     "csv-parser": "3.0.0",
     "fast-xml-parser": "4.3.5",
-    "yauzl": "2.10.0"
+    "yauzl": "3.1.1"
   },
   "devDependencies": {
     "@types/node": "20.10.6",

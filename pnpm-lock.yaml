@@ -12,8 +12,8 @@ dependencies:
     specifier: 4.3.5
     version: 4.3.5
   yauzl:
-    specifier: 3.1.1
-    version: 3.1.1
+    specifier: 3.1.2
+    version: 3.1.2
 
 devDependencies:
   '@types/node':
@@ -2603,8 +2603,8 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /yauzl@3.1.1:
-    resolution: {integrity: sha512-MPxA7oN5cvGV0wzfkeHKF2/+Q4TkMpHSWGRy/96I4Cozljmx0ph91+Muxh6HegEtDC4GftJ8qYDE51vghFiEYA==}
+  /yauzl@3.1.2:
+    resolution: {integrity: sha512-621iCPgEG1wXViDZS/L3h9F8TgrdQV1eayJlJ8j5A2SZg8OdY/1DLf+VxNeD+q5QbMFEAbjjR8nITj7g4nKa0Q==}
     engines: {node: '>=12'}
     dependencies:
       buffer-crc32: 0.2.13

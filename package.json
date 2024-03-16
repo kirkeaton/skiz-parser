@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "csv-parser": "3.0.0",
-    "fast-xml-parser": "4.3.5",
+    "fast-xml-parser": "4.3.6",
     "yauzl": "3.1.2"
   },
   "devDependencies": {

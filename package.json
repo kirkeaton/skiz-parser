@@ -12,7 +12,7 @@
     "yauzl": "3.1.2"
   },
   "devDependencies": {
-    "@types/node": "20.11.28",
+    "@types/node": "20.11.29",
     "prettier": "3.2.5",
     "semantic-release": "23.0.5",
     "tsd": "0.30.7"

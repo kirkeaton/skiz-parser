@@ -14,7 +14,7 @@
   "devDependencies": {
     "@types/node": "20.11.28",
     "prettier": "3.2.5",
-    "semantic-release": "23.0.4",
+    "semantic-release": "23.0.5",
     "tsd": "0.30.7"
   },
   "engines": {

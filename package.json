@@ -13,8 +13,6 @@
   },
   "devDependencies": {
     "@types/node": "20.11.28",
-    "husky": "9.0.11",
-    "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "semantic-release": "23.0.4",
     "tsd": "0.30.7"
@@ -38,9 +36,6 @@
     "skiz"
   ],
   "license": "BSD-3-Clause",
-  "lint-staged": {
-    "*.{js,json,md,ts}": "prettier --write"
-  },
   "packageManager": "pnpm@8.15.5",
   "prettier": {
     "printWidth": 80,
@@ -58,7 +53,6 @@
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"
   },
   "scripts": {
-    "prepare": "husky",
     "test": "node --test && tsd"
   },
   "type": "module"

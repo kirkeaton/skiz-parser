@@ -15,7 +15,7 @@
     "@kirkeaton/prettier-config": "1.0.1",
     "@types/node": "20.11.30",
     "prettier": "3.2.5",
-    "semantic-release": "23.0.5",
+    "semantic-release": "23.0.6",
     "tsd": "0.30.7"
   },
   "engines": {

@@ -38,7 +38,7 @@
     "skiz"
   ],
   "license": "BSD-3-Clause",
-  "packageManager": "pnpm@9.0.1",
+  "packageManager": "pnpm@9.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"

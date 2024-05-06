@@ -14,7 +14,7 @@
   "devDependencies": {
     "@kirkeaton/prettier-config": "1.0.2",
     "@kirkeaton/semantic-release-config": "1.0.1",
-    "@types/node": "20.12.8",
+    "@types/node": "20.12.10",
     "prettier": "3.2.5",
     "semantic-release": "23.0.8",
     "tsd": "0.31.0"

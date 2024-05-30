@@ -272,6 +272,6 @@ export const parseSkizFile = (contents, callback) => {
   };
 
   return typeof callback === 'function'
-    ? parse(callback.bind(null, undefined), callback)
+    ? parse(callback.bind(null, null), callback)
     : new Promise(parse);
 };

@@ -115,5 +115,5 @@ export function parseSkizFile(
 ): Promise<SkizTrack>;
 export function parseSkizFile(
   contents: ArrayBuffer | Buffer,
-  callback: (err: Error, result: SkizTrack) => void
+  callback: (err: Error | null, result: SkizTrack) => void
 ): void;

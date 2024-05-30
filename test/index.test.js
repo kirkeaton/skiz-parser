@@ -36,6 +36,7 @@ test('should parse .skiz file using callback', async (t) => {
         return reject(err);
       }
 
+      assert.equal(err, null);
       assert.equal(result.name, 'Day 15 - 2020/2021');
       assert.equal(result.activity, 'skiing');
       assert.ok(result.trackMetrics);

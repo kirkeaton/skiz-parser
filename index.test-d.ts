@@ -4,7 +4,7 @@ import { parseSkizFile, SkizTrack } from './index.js';
 
 const arrayBuffer = new ArrayBuffer(0);
 const buffer = Buffer.from(arrayBuffer);
-const callback = (error: Error, result: SkizTrack) => {};
+const callback = (error: Error | null, result: SkizTrack) => {};
 
 expectType<Promise<SkizTrack>>(parseSkizFile(buffer));
 expectError<Promise<SkizTrack>>(parseSkizFile(buffer, callback));

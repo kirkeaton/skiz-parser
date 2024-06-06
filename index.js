@@ -1,11 +1,11 @@
-import csv from 'csv-parser';
+import { parse as CSVParser } from 'csv-parse';
 import { XMLParser } from 'fast-xml-parser';
 import yauzl from 'yauzl';
 
-const parser = new XMLParser({
+const xmlParserOptions = {
   attributeNamePrefix: '',
   ignoreAttributes: false,
-});
+};
 
 const convertReadStreamToBuffer = (readStream) => {
   return new Promise((resolve, reject) => {
@@ -31,69 +31,84 @@ const openReadStream = (zipFile, entry) => {
 };
 
 const parseBatteryCsvFile = (readStream) => {
+  const parser = CSVParser();
+
   return new Promise((resolve, reject) => {
     const batteryUsage = [];
 
-    readStream
-      .pipe(csv({ headers: false }))
+    parser
       .on('error', reject)
-      .on('data', (data) => {
-        const values = Object.values(data);
+      .on('readable', () => {
+        let record;
 
-        batteryUsage.push({
-          timestamp: new Date(values[0]),
-          status: values[1],
-          level: parseFloat(values[2]),
-        });
+        while ((record = parser.read()) !== null) {
+          batteryUsage.push({
+            timestamp: new Date(record[0]),
+            status: record[1],
+            level: parseFloat(record[2]),
+          });
+        }
       })
       .once('end', () => {
         resolve({ batteryUsage });
       });
+
+    readStream.pipe(parser);
   });
 };
 
 const parseNodeCsvFile = (readStream) => {
+  const parser = CSVParser();
+
   return new Promise((resolve, reject) => {
     const trackNodes = [];
 
-    readStream
-      .pipe(csv({ headers: false }))
+    parser
       .on('error', reject)
-      .on('data', (data) => {
-        const values = Object.values(data);
+      .on('readable', () => {
+        let record;
 
-        trackNodes.push({
-          timestamp: new Date(parseFloat(values[0]) * 1000.0),
-          latitude: parseFloat(values[1]),
-          longitude: parseFloat(values[2]),
-          altitude: parseFloat(values[3]),
-          heading: parseFloat(values[4]),
-          velocity: parseFloat(values[5]),
-          hAccuracy: parseFloat(values[6]),
-          vAccuracy: parseFloat(values[7]),
-        });
+        while ((record = parser.read()) !== null) {
+          trackNodes.push({
+            timestamp: new Date(parseFloat(record[0]) * 1000.0),
+            latitude: parseFloat(record[1]),
+            longitude: parseFloat(record[2]),
+            altitude: parseFloat(record[3]),
+            heading: parseFloat(record[4]),
+            velocity: parseFloat(record[5]),
+            hAccuracy: parseFloat(record[6]),
+            vAccuracy: parseFloat(record[7]),
+          });
+        }
       })
       .once('end', () => {
         resolve({ trackNodes });
       });
+
+    readStream.pipe(parser);
   });
 };
 
 const parseRelativeAltitudeSensorCsvFile = (readStream) => {
+  const parser = CSVParser();
+
   return new Promise((resolve, reject) => {
     const relativeAltitude = [];
 
-    readStream
-      .pipe(csv({ headers: false }))
-      .on('error', reject)
-      .on('data', (data) => {
-        const values = Object.values(data);
+    readStream.pipe(parser);
 
-        relativeAltitude.push({
-          timestamp: new Date(values[0]),
-          pressure: parseFloat(values[1]),
-          relativeAltitude: parseFloat(values[2]),
-        });
+    parser
+      .on('error', reject)
+      .on('readable', (data) => {
+        let record;
+
+        while ((record = parser.read()) !== null) {
+          relativeAltitude.push({
+            timestamp: new Date(record[0]),
+            pressure: parseFloat(record[1]),
+            relativeAltitude: parseFloat(record[2]),
+          });
+        }
       })
       .once('end', () => {
         resolve({ relativeAltitude });
@@ -102,48 +117,54 @@ const parseRelativeAltitudeSensorCsvFile = (readStream) => {
 };
 
 const parseSegmentCsvFile = (readStream) => {
+  const parser = CSVParser({ fromLine: 2 });
+
   return new Promise((resolve, reject) => {
     const trackSegments = [];
 
-    readStream
-      .pipe(csv({ headers: false, skipLines: 1 }))
+    parser
       .on('error', reject)
-      .on('data', (data) => {
-        const values = Object.values(data);
+      .on('readable', () => {
+        let record;
 
-        trackSegments.push({
-          startTime: new Date(parseFloat(values[0]) * 1000),
-          endTime: new Date(parseFloat(values[1]) * 1000),
-          number: parseInt(values[4], 10),
-          name: values[5],
-          comment: values[6],
-          type: values[7],
-          category: values[8],
-          link: values[9],
-          uuid: values[10],
-          metrics: {
-            time: parseFloat(values[11]),
-            speed: parseFloat(values[12]),
-            distance: parseFloat(values[13]),
-            vertical: parseFloat(values[14]),
-            maxSpeed: parseFloat(values[15]),
-            slope: parseFloat(values[16]),
-            maxSlope: parseFloat(values[17]),
-            minAltitude: parseFloat(values[18]),
-            maxAltitude: parseFloat(values[19]),
-            startAltitude: parseFloat(values[20]),
-            finishAltitude: parseFloat(values[21]),
-          },
-        });
+        while ((record = parser.read()) !== null) {
+          trackSegments.push({
+            startTime: new Date(parseFloat(record[0]) * 1000),
+            endTime: new Date(parseFloat(record[1]) * 1000),
+            number: parseInt(record[4], 10),
+            name: record[5],
+            comment: record[6],
+            type: record[7],
+            category: record[8],
+            link: record[9],
+            uuid: record[10],
+            metrics: {
+              time: parseFloat(record[11]),
+              speed: parseFloat(record[12]),
+              distance: parseFloat(record[13]),
+              vertical: parseFloat(record[14]),
+              maxSpeed: parseFloat(record[15]),
+              slope: parseFloat(record[16]),
+              maxSlope: parseFloat(record[17]),
+              minAltitude: parseFloat(record[18]),
+              maxAltitude: parseFloat(record[19]),
+              startAltitude: parseFloat(record[20]),
+              finishAltitude: parseFloat(record[21]),
+            },
+          });
+        }
       })
       .once('end', () => {
         resolve({ trackSegments });
       });
+
+    readStream.pipe(parser);
   });
 };
 
 const parseTrackXmlFile = async (readStream) => {
   const buffer = await convertReadStreamToBuffer(readStream);
+  const parser = new XMLParser(xmlParserOptions);
   const parsed = parser.parse(buffer.toString('utf-8'));
 
   const track = parsed.track;
@@ -201,6 +222,7 @@ const parseTrackXmlFile = async (readStream) => {
 
 const parseEventsXmlFile = async (readStream) => {
   const buffer = await convertReadStreamToBuffer(readStream);
+  const parser = new XMLParser(xmlParserOptions);
   const parsed = parser.parse(buffer.toString('utf-8'));
 
   const events = parsed.events.event || [];

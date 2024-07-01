@@ -17,17 +17,12 @@ packages:
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
 
-  csv-parser@3.0.0:
-    resolution: {integrity: sha512-s6OYSXAK3IdKqYO33y09jhypG/bSDHPuyCme/IdEHfWpLf/jKcpitVFyOC6UemgGk8v7Q5u2XE0vvwmanxhGlQ==}
-    engines: {node: '>= 10'}
-    hasBin: true
+  csv-parse@5.5.6:
+    resolution: {integrity: sha512-uNpm30m/AGSkLxxy7d9yRXpJQFrZzVWLFBkS+6ngPcZkw/5k3L/jjFuj7tVnEpRn+QgmiXr21nDlhCiUK4ij2A==}
 
   fast-xml-parser@4.4.0:
     resolution: {integrity: sha512-kLY3jFlwIYwBNDojclKsNAC12sfD6NwW74QB2CoNGPvtVxjliYehVunB3HYyNi+n4Tt1dAcgwYvmKF/Z18flqg==}
     hasBin: true
-
-  minimist@1.2.8:
-    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
   pend@1.2.0:
     resolution: {integrity: sha512-F3asv42UuXchdzt+xXqfW1OGlVBe+mxa2mqI0pg5yAHZPvFmY3Y6drSf/GQ1A86WgWEN9Kzh/WrgKa6iGcHXLg==}
@@ -47,21 +42,17 @@ snapshots:
 
   buffer-crc32@0.2.13: {}
 
-  csv-parser@3.0.0:
-    dependencies:
-      minimist: 1.2.8
+  csv-parse@5.5.6: {}
 
   fast-xml-parser@4.4.0:
     dependencies:
       strnum: 1.0.5
 
-  minimist@1.2.8: {}
-
   pend@1.2.0: {}
 
   skiz-parser@file:..:
     dependencies:
-      csv-parser: 3.0.0
+      csv-parse: 5.5.6
       fast-xml-parser: 4.4.0
       yauzl: 3.1.3
 

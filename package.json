@@ -1,7 +1,7 @@
 {
   "name": "skiz-parser",
-  "description": "Parse a .skiz file exported from Ski Tracks",
   "version": "0.0.0-development",
+  "description": "Parse a .skiz file exported from Ski Tracks",
   "author": "Kirk Eaton <contact@kirkeaton.ca>",
   "bugs": {
     "url": "https://github.com/kirkeaton/skiz-parser/issues"

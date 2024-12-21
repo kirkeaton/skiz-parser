@@ -1,6 +1,6 @@
 import { parse as CSVParser } from 'csv-parse';
 import { XMLParser } from 'fast-xml-parser';
-import type { Readable } from 'stream';
+import type { Readable } from 'node:stream';
 import { Entry, ZipFile, fromBuffer } from 'yauzl';
 import {
   SkizBatteryUsage,

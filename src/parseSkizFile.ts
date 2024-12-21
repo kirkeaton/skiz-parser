@@ -1,15 +1,39 @@
 import { parse as CSVParser } from 'csv-parse';
 import { XMLParser } from 'fast-xml-parser';
-import yauzl from 'yauzl';
+import type { Readable } from 'stream';
+import { Entry, ZipFile, fromBuffer } from 'yauzl';
+import {
+  SkizBatteryUsage,
+  SkizRelativeAltitude,
+  SkizTrack,
+  SkizTrackEvent,
+  SkizTrackNode,
+  SkizTrackSegment,
+} from './types.js';
 
 const xmlParserOptions = {
   attributeNamePrefix: '',
   ignoreAttributes: false,
 };
 
-const convertReadStreamToBuffer = (readStream) => {
+type SkizTrackXML = Omit<
+  SkizTrack,
+  | 'batteryUsage'
+  | 'relativeAltitude'
+  | 'trackEvents'
+  | 'trackNodes'
+  | 'trackSegments'
+>;
+
+interface SkizTrackEventXML {
+  start: string;
+  end: string;
+  type: string;
+}
+
+const convertReadStreamToBuffer = (readStream: Readable): Promise<Buffer> => {
   return new Promise((resolve, reject) => {
-    const chunks = [];
+    const chunks: Uint8Array[] = [];
 
     readStream
       .on('error', reject)
@@ -22,7 +46,7 @@ const convertReadStreamToBuffer = (readStream) => {
   });
 };
 
-const openReadStream = (zipFile, entry) => {
+const openReadStream = (zipFile: ZipFile, entry: Entry): Promise<Readable> => {
   return new Promise((resolve, reject) => {
     zipFile.openReadStream(entry, (err, readStream) => {
       err ? reject(err) : resolve(readStream);
@@ -30,11 +54,13 @@ const openReadStream = (zipFile, entry) => {
   });
 };
 
-const parseBatteryCsvFile = (readStream) => {
+const parseBatteryCsvFile = (
+  readStream: Readable
+): Promise<SkizBatteryUsage[]> => {
   const parser = CSVParser();
 
   return new Promise((resolve, reject) => {
-    const batteryUsage = [];
+    const batteryUsage: SkizBatteryUsage[] = [];
 
     parser
       .on('error', reject)
@@ -50,18 +76,18 @@ const parseBatteryCsvFile = (readStream) => {
         }
       })
       .once('end', () => {
-        resolve({ batteryUsage });
+        resolve(batteryUsage);
       });
 
     readStream.pipe(parser);
   });
 };
 
-const parseNodeCsvFile = (readStream) => {
+const parseNodeCsvFile = (readStream: Readable): Promise<SkizTrackNode[]> => {
   const parser = CSVParser();
 
   return new Promise((resolve, reject) => {
-    const trackNodes = [];
+    const trackNodes: SkizTrackNode[] = [];
 
     parser
       .on('error', reject)
@@ -82,24 +108,26 @@ const parseNodeCsvFile = (readStream) => {
         }
       })
       .once('end', () => {
-        resolve({ trackNodes });
+        resolve(trackNodes);
       });
 
     readStream.pipe(parser);
   });
 };
 
-const parseRelativeAltitudeSensorCsvFile = (readStream) => {
+const parseRelativeAltitudeSensorCsvFile = (
+  readStream: Readable
+): Promise<SkizRelativeAltitude[]> => {
   const parser = CSVParser();
 
   return new Promise((resolve, reject) => {
-    const relativeAltitude = [];
+    const relativeAltitude: SkizRelativeAltitude[] = [];
 
     readStream.pipe(parser);
 
     parser
       .on('error', reject)
-      .on('readable', (data) => {
+      .on('readable', () => {
         let record;
 
         while ((record = parser.read()) !== null) {
@@ -111,16 +139,18 @@ const parseRelativeAltitudeSensorCsvFile = (readStream) => {
         }
       })
       .once('end', () => {
-        resolve({ relativeAltitude });
+        resolve(relativeAltitude);
       });
   });
 };
 
-const parseSegmentCsvFile = (readStream) => {
+const parseSegmentCsvFile = (
+  readStream: Readable
+): Promise<SkizTrackSegment[]> => {
   const parser = CSVParser({ fromLine: 2 });
 
   return new Promise((resolve, reject) => {
-    const trackSegments = [];
+    const trackSegments: SkizTrackSegment[] = [];
 
     parser
       .on('error', reject)
@@ -155,14 +185,16 @@ const parseSegmentCsvFile = (readStream) => {
         }
       })
       .once('end', () => {
-        resolve({ trackSegments });
+        resolve(trackSegments);
       });
 
     readStream.pipe(parser);
   });
 };
 
-const parseTrackXmlFile = async (readStream) => {
+const parseTrackXmlFile = async (
+  readStream: Readable
+): Promise<SkizTrackXML> => {
   const buffer = await convertReadStreamToBuffer(readStream);
   const parser = new XMLParser(xmlParserOptions);
   const parsed = parser.parse(buffer.toString('utf-8'));
@@ -220,80 +252,108 @@ const parseTrackXmlFile = async (readStream) => {
   };
 };
 
-const parseEventsXmlFile = async (readStream) => {
+const parseEventsXmlFile = async (
+  readStream: Readable
+): Promise<SkizTrackEvent[]> => {
   const buffer = await convertReadStreamToBuffer(readStream);
   const parser = new XMLParser(xmlParserOptions);
   const parsed = parser.parse(buffer.toString('utf-8'));
 
-  const events = parsed.events.event || [];
-  const trackEvents = events.map((event) => ({
+  const events: SkizTrackEventXML[] = parsed.events.event || [];
+  const trackEvents = events.map((event: SkizTrackEventXML) => ({
     start: new Date(Date.parse(event.start)),
     end: new Date(Date.parse(event.end)),
     type: event.type,
   }));
 
-  return { trackEvents };
+  return trackEvents;
 };
 
-export const parseSkizFile = (contents, callback) => {
-  const parse = (resolve, reject) => {
-    if (contents instanceof ArrayBuffer) {
-      contents = Buffer.from(contents);
-    }
+export function parseSkizFile(
+  contents: ArrayBuffer | Buffer
+): Promise<SkizTrack>;
+export function parseSkizFile(
+  contents: ArrayBuffer | Buffer,
+  callback: (err: Error | null, result?: SkizTrack) => void
+): void;
+export function parseSkizFile(
+  contents: ArrayBuffer | Buffer,
+  callback?: (err: Error | null, result?: SkizTrack) => void
+): Promise<SkizTrack> | void {
+  const parse = (
+    resolve: (value: SkizTrack) => void,
+    reject: (err: Error) => void
+  ) => {
+    const buffer =
+      contents instanceof ArrayBuffer ? Buffer.from(contents) : contents;
 
-    yauzl.fromBuffer(contents, { lazyEntries: true }, (err, zipFile) => {
-      if (err) {
-        return reject(err);
+    fromBuffer(
+      buffer,
+      { lazyEntries: true },
+      (err: Error | null, zipFile: ZipFile) => {
+        if (err) {
+          return reject(err);
+        }
+
+        let skizTrackXml: SkizTrackXML;
+        let batteryUsage: SkizBatteryUsage[];
+        let relativeAltitude: SkizRelativeAltitude[];
+        let trackEvents: SkizTrackEvent[];
+        let trackNodes: SkizTrackNode[];
+        let trackSegments: SkizTrackSegment[];
+
+        zipFile.readEntry();
+
+        zipFile
+          .on('error', reject)
+          .on('entry', async (entry) => {
+            if (
+              ![
+                'Battery.csv',
+                'Events.xml',
+                'Nodes.csv',
+                'RelativeAltitudeSensor.csv',
+                'Segment.csv',
+                'Track.xml',
+              ].includes(entry.fileName)
+            ) {
+              return zipFile.readEntry();
+            }
+
+            const readStream = await openReadStream(zipFile, entry);
+
+            if (entry.fileName === 'Battery.csv') {
+              batteryUsage = await parseBatteryCsvFile(readStream);
+            } else if (entry.fileName === 'Events.xml') {
+              trackEvents = await parseEventsXmlFile(readStream);
+            } else if (entry.fileName === 'Nodes.csv') {
+              trackNodes = await parseNodeCsvFile(readStream);
+            } else if (entry.fileName === 'RelativeAltitudeSensor.csv') {
+              relativeAltitude =
+                await parseRelativeAltitudeSensorCsvFile(readStream);
+            } else if (entry.fileName === 'Segment.csv') {
+              trackSegments = await parseSegmentCsvFile(readStream);
+            } else if (entry.fileName === 'Track.xml') {
+              skizTrackXml = await parseTrackXmlFile(readStream);
+            }
+
+            zipFile.readEntry();
+          })
+          .once('end', () => {
+            resolve({
+              ...skizTrackXml,
+              batteryUsage,
+              relativeAltitude,
+              trackEvents,
+              trackNodes,
+              trackSegments,
+            });
+          });
       }
-
-      let data = {};
-
-      zipFile.readEntry();
-
-      zipFile
-        .on('error', reject)
-        .on('entry', async (entry) => {
-          if (
-            ![
-              'Battery.csv',
-              'Events.xml',
-              'Nodes.csv',
-              'RelativeAltitudeSensor.csv',
-              'Segment.csv',
-              'Track.xml',
-            ].includes(entry.fileName)
-          ) {
-            return zipFile.readEntry();
-          }
-
-          const readStream = await openReadStream(zipFile, entry);
-
-          let result;
-          if (entry.fileName === 'Battery.csv') {
-            result = await parseBatteryCsvFile(readStream);
-          } else if (entry.fileName === 'Events.xml') {
-            result = await parseEventsXmlFile(readStream);
-          } else if (entry.fileName === 'Nodes.csv') {
-            result = await parseNodeCsvFile(readStream);
-          } else if (entry.fileName === 'RelativeAltitudeSensor.csv') {
-            result = await parseRelativeAltitudeSensorCsvFile(readStream);
-          } else if (entry.fileName === 'Segment.csv') {
-            result = await parseSegmentCsvFile(readStream);
-          } else if (entry.fileName === 'Track.xml') {
-            result = await parseTrackXmlFile(readStream);
-          }
-
-          data = { ...data, ...result };
-
-          zipFile.readEntry();
-        })
-        .once('end', () => {
-          resolve(data);
-        });
-    });
+    );
   };
 
   return typeof callback === 'function'
     ? parse(callback.bind(null, null), callback)
     : new Promise(parse);
-};
+}

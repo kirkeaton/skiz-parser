@@ -109,11 +109,3 @@ export interface SkizTrack {
   version: string;
   weather: string;
 }
-
-export function parseSkizFile(
-  contents: ArrayBuffer | Buffer
-): Promise<SkizTrack>;
-export function parseSkizFile(
-  contents: ArrayBuffer | Buffer,
-  callback: (err: Error | null, result: SkizTrack) => void
-): void;

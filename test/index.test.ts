@@ -4,7 +4,7 @@ import test from 'node:test';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import { parseSkizFile } from '../index.js';
+import { parseSkizFile } from '../src/index.js';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const filename = path.join(dirname, '../example.skiz');
@@ -34,6 +34,9 @@ test('should parse .skiz file using callback', async (t) => {
     parseSkizFile(file, (err, result) => {
       if (err) {
         return reject(err);
+      }
+      if (!result) {
+        return reject(new Error('No result'));
       }
 
       assert.equal(err, null);

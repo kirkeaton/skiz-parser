@@ -18,7 +18,6 @@
     "@types/yauzl": "^2.10.3",
     "prettier": "3.4.2",
     "semantic-release": "24.2.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "engines": {
@@ -48,7 +47,7 @@
     "build": "pnpm clean && tsc",
     "clean": "rm -rf dist",
     "prepublishOnly": "pnpm build",
-    "test": "node --test --experimental-strip-types"
+    "test": "pnpm build && node --test"
   },
   "type": "module"
 }

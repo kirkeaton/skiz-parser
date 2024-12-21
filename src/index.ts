@@ -1,5 +1,5 @@
 export { parseSkizFile } from './parseSkizFile.js';
-export {
+export type {
   SkizBatteryUsage,
   SkizRelativeAltitude,
   SkizTrack,

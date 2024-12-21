@@ -22,8 +22,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3
       '@kirkeaton/semantic-release-config':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       '@types/node':
         specifier: 22.10.2
         version: 22.10.2
@@ -58,8 +58,8 @@ packages:
   '@kirkeaton/prettier-config@1.0.3':
     resolution: {integrity: sha512-gY6SVSpqDxB/1SFvnx0UWASlF0JjH37kngzEZTAMUUaSc1olXtGvyWwH5nhzV750NzAZKcs5xTzLSUyAW8braQ==}
 
-  '@kirkeaton/semantic-release-config@1.0.1':
-    resolution: {integrity: sha512-qZZ6+U5q3+E4/24JfrnqbiqlDgMm5DPsjHiEJYm4o0GL6pn1d/R/5JT0O2Sv+KKX0qLGDBYIqPc3JR9pFpzlLQ==}
+  '@kirkeaton/semantic-release-config@1.0.2':
+    resolution: {integrity: sha512-m6KEc89BioVvJpmFdpccMdYhH8k6lHDeMYo8YJYwj/lwCuR3tMK/chqM4zxPKf/pxXqycUoRCIqOBvowKOt6Rw==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1494,7 +1494,7 @@ snapshots:
 
   '@kirkeaton/prettier-config@1.0.3': {}
 
-  '@kirkeaton/semantic-release-config@1.0.1': {}
+  '@kirkeaton/semantic-release-config@1.0.2': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

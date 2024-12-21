@@ -14,21 +14,23 @@
   "devDependencies": {
     "@kirkeaton/prettier-config": "1.0.3",
     "@kirkeaton/semantic-release-config": "1.0.2",
+    "@kirkeaton/tsconfig": "1.0.0",
     "@types/node": "22.10.2",
+    "@types/yauzl": "2.10.3",
     "prettier": "3.4.2",
     "semantic-release": "24.2.0",
-    "tsd": "0.31.2"
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
   },
   "engines": {
     "node": ">=18"
   },
   "exports": {
-    "types": "./index.d.ts",
-    "default": "./index.js"
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
   },
   "files": [
-    "index.js",
-    "index.d.ts"
+    "dist"
   ],
   "homepage": "https://github.com/kirkeaton/skiz-parser#readme",
   "keywords": [
@@ -44,7 +46,10 @@
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"
   },
   "scripts": {
-    "test": "node --test && tsd"
+    "build": "pnpm clean && tsc -p tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "pnpm build",
+    "test": "tsx --test"
   },
   "type": "module"
 }

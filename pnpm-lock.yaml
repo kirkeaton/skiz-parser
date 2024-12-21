@@ -19,8 +19,8 @@ importers:
         version: 3.2.0
     devDependencies:
       '@kirkeaton/prettier-config':
-        specifier: 1.0.2
-        version: 1.0.2
+        specifier: 1.0.3
+        version: 1.0.3
       '@kirkeaton/semantic-release-config':
         specifier: 1.0.1
         version: 1.0.1
@@ -55,8 +55,8 @@ packages:
     resolution: {integrity: sha512-mo5j5X+jIZmJQveBKeS/clAueipV7KgiX1vMgCxam1RNYiqE1w62n0/tJJnHtjW8ZHcQco5gY85jA3mi0L+nSA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  '@kirkeaton/prettier-config@1.0.2':
-    resolution: {integrity: sha512-14A7UgBeVbA0Hj58mwqy3U0+sOUSjeiiIIY+lB735oGGHdUkcvfTzLYIzqIc+vbYRJKlyMXKdZtNPzu3+TfElQ==}
+  '@kirkeaton/prettier-config@1.0.3':
+    resolution: {integrity: sha512-gY6SVSpqDxB/1SFvnx0UWASlF0JjH37kngzEZTAMUUaSc1olXtGvyWwH5nhzV750NzAZKcs5xTzLSUyAW8braQ==}
 
   '@kirkeaton/semantic-release-config@1.0.1':
     resolution: {integrity: sha512-qZZ6+U5q3+E4/24JfrnqbiqlDgMm5DPsjHiEJYm4o0GL6pn1d/R/5JT0O2Sv+KKX0qLGDBYIqPc3JR9pFpzlLQ==}
@@ -1492,7 +1492,7 @@ snapshots:
     dependencies:
       '@sinclair/typebox': 0.27.8
 
-  '@kirkeaton/prettier-config@1.0.2': {}
+  '@kirkeaton/prettier-config@1.0.3': {}
 
   '@kirkeaton/semantic-release-config@1.0.1': {}
 

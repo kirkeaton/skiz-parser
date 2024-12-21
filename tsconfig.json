@@ -1,31 +1,5 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "compilerOptions": {
-    // Emit
-    "declaration": true,
-    "outDir": "${configDir}/dist",
-    // Language and Environment
-    "jsx": "react-jsx",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022" // Node.js 18
-    ],
-    "target": "ESNext",
-    // Modules
-    "module": "Node16",
-    "moduleDetection": "force",
-    "moduleResolution": "node16",
-    "resolveJsonModule": true,
-    // Type Checking
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUncheckedIndexedAccess": true,
-    "noUncheckedSideEffectImports": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "strict": true
-  },
+  "extends": "@kirkeaton/tsconfig",
   "include": ["src"]
 }

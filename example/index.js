@@ -1,8 +1,8 @@
-import { promises as fsAsync } from 'fs';
+import { readFile } from 'node:fs/promises';
 import { parseSkizFile } from 'skiz-parser';
 
 (async () => {
-  const contents = await fsAsync.readFile('../example.skiz');
+  const contents = await readFile('../example.skiz');
   const result = await parseSkizFile(contents);
 
   console.log(result);

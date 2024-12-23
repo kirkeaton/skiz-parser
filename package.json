@@ -39,7 +39,6 @@
     "ski tracks",
     "skiz"
   ],
-  "license": "BSD-3-Clause",
   "packageManager": "pnpm@9.15.1",
   "repository": {
     "type": "git",

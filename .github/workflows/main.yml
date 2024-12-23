@@ -30,6 +30,8 @@ jobs:
       - run: pnpm install
       - run: pnpm build
       - uses: kirkeaton/action-publint@v1
+        with:
+          strict: true
   check_types:
     name: Check types
     runs-on: ubuntu-latest

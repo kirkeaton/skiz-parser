@@ -29,7 +29,7 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm build
-      - uses: kirkeaton/action-publint@2daf98765a3e415b41649922549bd882519da2b0
+      - uses: kirkeaton/action-publint@v1
   check_types:
     name: Check types
     runs-on: ubuntu-latest

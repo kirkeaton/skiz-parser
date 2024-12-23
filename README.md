@@ -1,6 +1,6 @@
 # skiz-parser
 
-> Parse a .skiz file exported from Ski Tracks
+Parse a .skiz file exported from Ski Tracks
 
 ## Install
 

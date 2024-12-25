@@ -11,10 +11,10 @@ $ npm install skiz-parser
 ## Usage
 
 ```js
-import { promises as fsAsync } from 'fs';
+import { readFile } from 'node:fs/promises';
 import { parseSkizFile } from 'skiz-parser';
 
-const contents = await fsAsync.readFile('./example.skiz');
+const contents = await readFile('./example.skiz');
 const result = await parseSkizFile(contents);
 
 console.log(result);
@@ -23,20 +23,12 @@ console.log(result);
 
 ## API
 
-### parseSkizFile(contents, callback?)
+### parseSkizFile(contents)
 
-Returns a `Promise<object>` with the parsed .skiz file.
-
-Optionally a callback function may be used instead.
+Returns a `Promise<SkizTrack>` with the parsed .skiz file.
 
 #### contents
 
-Type: `Buffer`
+Type: `ArrayBuffer | Buffer`
 
 Contents of a `.skiz` file.
-
-#### callback
-
-Type: `Function`
-
-Optional callback with error as the first argument and the parsed .skiz file as the second.

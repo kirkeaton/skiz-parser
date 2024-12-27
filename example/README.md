@@ -1,18 +1,18 @@
 # skiz-parser-example
 
-> Basic working example of skiz-parser
+Basic working example of skiz-parser
 
 ## Requirements
 
-- `npm` or `yarn`
+- `pnpm`
 - Node.js >= 18
 
 ## Prerequisites
 
-- Install dependencies by running `npm install` or `yarn`
+- Install dependencies by running `pnpm install`
 
 ## Running
 
 ```bash
-$ npm start # or yarn start
+$ pnpm start
 ```

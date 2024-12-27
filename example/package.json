@@ -11,9 +11,11 @@
   },
   "exports": "./index.js",
   "license": "BSD-3-Clause",
+  "packageManager": "pnpm@9.13.2",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "build": "pnpm --prefix ../ build",
+    "start": "pnpm build && node index.js"
   },
   "type": "module"
 }

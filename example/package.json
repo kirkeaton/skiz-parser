@@ -1,7 +1,7 @@
 {
   "name": "skiz-parser-example",
-  "description": "Basic skiz-parser example",
   "version": "1.0.0",
+  "description": "Basic skiz-parser example",
   "author": "Kirk Eaton <contact@kirkeaton.ca>",
   "dependencies": {
     "skiz-parser": "file:.."
@@ -9,8 +9,9 @@
   "engines": {
     "node": ">=18"
   },
+  "exports": "./index.js",
   "license": "BSD-3-Clause",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node index.js"
   },

@@ -25,8 +25,8 @@ importers:
         specifier: 1.0.3
         version: 1.0.3
       '@kirkeaton/tsconfig':
-        specifier: 1.0.0
-        version: 1.0.0
+        specifier: 1.0.1
+        version: 1.0.1
       '@types/node':
         specifier: 22.10.7
         version: 22.10.7
@@ -210,8 +210,8 @@ packages:
   '@kirkeaton/semantic-release-config@1.0.3':
     resolution: {integrity: sha512-EoucDNwRs0du5InNNvm0Q/CUuny70N+2u4QYaY/g0XrZlFdWU0seQm6+6m2zV9PmXUC4rut9hV0dh8y8vqlirg==}
 
-  '@kirkeaton/tsconfig@1.0.0':
-    resolution: {integrity: sha512-jGkJytr75Lbf7OIudOzxuiMgz2negvkHyaCO6eLSFmCJptr4P9J7vBdveooqP5wg6Y6GJz5LDfikQ0dkXEhSNQ==}
+  '@kirkeaton/tsconfig@1.0.1':
+    resolution: {integrity: sha512-EXhMLZh4bnfrRUvjPssSvNLse6tvzb6EsMGgJqK/lTzyGqpckwMbvOqQn2LLjW/u+2LeNQR0acekwqdp6ONW4Q==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1491,7 +1491,7 @@ snapshots:
 
   '@kirkeaton/semantic-release-config@1.0.3': {}
 
-  '@kirkeaton/tsconfig@1.0.0': {}
+  '@kirkeaton/tsconfig@1.0.1': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

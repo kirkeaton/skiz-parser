@@ -19,14 +19,14 @@ importers:
         version: 3.2.0
     devDependencies:
       '@kirkeaton/prettier-config':
+        specifier: 1.0.5
+        version: 1.0.5
+      '@kirkeaton/semantic-release-config':
         specifier: 1.0.4
         version: 1.0.4
-      '@kirkeaton/semantic-release-config':
-        specifier: 1.0.3
-        version: 1.0.3
       '@kirkeaton/tsconfig':
-        specifier: 1.0.1
-        version: 1.0.1
+        specifier: 1.0.2
+        version: 1.0.2
       '@types/node':
         specifier: 22.13.4
         version: 22.13.4
@@ -204,14 +204,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@kirkeaton/prettier-config@1.0.4':
-    resolution: {integrity: sha512-ITo5MInJsaZkcPo6BP6iESXvb1CErNv83G12LOZ0dnXuLnYQbx81tB767TMWx0poKpRujE6GbDg4jQMASkGWbg==}
+  '@kirkeaton/prettier-config@1.0.5':
+    resolution: {integrity: sha512-1qTt9JF2M7geisH+Hk16aQWgYxxXFX5I3CvW5qFp8ipJ72ru93qK0bpsIhfiiXnKZS9FL3DC+cj+JCoPu3S7vg==}
 
-  '@kirkeaton/semantic-release-config@1.0.3':
-    resolution: {integrity: sha512-EoucDNwRs0du5InNNvm0Q/CUuny70N+2u4QYaY/g0XrZlFdWU0seQm6+6m2zV9PmXUC4rut9hV0dh8y8vqlirg==}
+  '@kirkeaton/semantic-release-config@1.0.4':
+    resolution: {integrity: sha512-OEXHcxMXWg2olZu8azP+QMpSkNTOhBFfiAbcIpH3mEQlvI9hgwXhJayNvsp7rPfpIOBKgvGImXdPjv+QdEq2Lw==}
 
-  '@kirkeaton/tsconfig@1.0.1':
-    resolution: {integrity: sha512-EXhMLZh4bnfrRUvjPssSvNLse6tvzb6EsMGgJqK/lTzyGqpckwMbvOqQn2LLjW/u+2LeNQR0acekwqdp6ONW4Q==}
+  '@kirkeaton/tsconfig@1.0.2':
+    resolution: {integrity: sha512-SXhSrsbn9OJ+XvyMqCAcmvsG88WfuJN1PK146D80+lsFqtxVrZVloeQp5B04u6HLGoFXwLhNxGdbq7cB5UyUOg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1487,11 +1487,11 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@kirkeaton/prettier-config@1.0.4': {}
+  '@kirkeaton/prettier-config@1.0.5': {}
 
-  '@kirkeaton/semantic-release-config@1.0.3': {}
+  '@kirkeaton/semantic-release-config@1.0.4': {}
 
-  '@kirkeaton/tsconfig@1.0.1': {}
+  '@kirkeaton/tsconfig@1.0.2': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

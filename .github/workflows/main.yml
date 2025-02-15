@@ -24,7 +24,7 @@ jobs:
         run: pnpm prettier --check "**/*.{js,json,md,ts}"
       - name: Check types
         run: pnpm tsc --noEmit
-      - name: Run build
+      - name: Build
         run: pnpm build
       - name: Check for packaging errors
         uses: kirkeaton/action-publint@v1

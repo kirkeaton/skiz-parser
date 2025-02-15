@@ -27,13 +27,16 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
-      - name: Check formatting
+      - if: ${{ matrix.node-version == 22 }}
+        name: Check formatting
         run: pnpm prettier --check "**/*.{js,json,md,ts}"
-      - name: Check types
+      - if: ${{ matrix.node-version == 22 }}
+        name: Check types
         run: pnpm tsc --noEmit
       - name: Build
         run: pnpm build
       - name: Run tests
         run: pnpm test
-      - name: Check for packaging errors
+      - if: ${{ matrix.node-version == 22 }}
+        name: Check for packaging errors
         uses: kirkeaton/action-publint@v1

@@ -39,4 +39,4 @@ jobs:
         run: pnpm test
       - if: ${{ matrix.node-version == 22 }}
         name: Check for packaging errors
-        uses: kirkeaton/action-publint@v1
+        uses: kirkeaton/action-publint@5786c327ca82fe80a4851bdaefab847aa7b3093f # v1.0.5

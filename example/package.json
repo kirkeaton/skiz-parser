@@ -11,7 +11,7 @@
   },
   "exports": "./index.js",
   "license": "BSD-3-Clause",
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.8.1",
   "private": true,
   "scripts": {
     "build": "pnpm --prefix ../ build",

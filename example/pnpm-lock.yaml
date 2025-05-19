@@ -31,8 +31,8 @@ packages:
     resolution: {directory: .., type: directory}
     engines: {node: '>=18'}
 
-  strnum@2.1.0:
-    resolution: {integrity: sha512-w0S//9BqZZGw0L0Y8uLSelFGnDJgTyyNQLmSlPnVz43zPAiqu3w4t8J8sDqqANOGeZIZ/9jWuPguYcEnsoHv4A==}
+  strnum@2.1.1:
+    resolution: {integrity: sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==}
 
   yauzl@3.2.0:
     resolution: {integrity: sha512-Ow9nuGZE+qp1u4JIPvg+uCiUr7xGQWdff7JQSk5VGYTAZMDe2q8lxJ10ygv10qmSj031Ty/6FNJpLO4o1Sgc+w==}
@@ -46,7 +46,7 @@ snapshots:
 
   fast-xml-parser@5.2.3:
     dependencies:
-      strnum: 2.1.0
+      strnum: 2.1.1
 
   pend@1.2.0: {}
 
@@ -56,7 +56,7 @@ snapshots:
       fast-xml-parser: 5.2.3
       yauzl: 3.2.0
 
-  strnum@2.1.0: {}
+  strnum@2.1.1: {}
 
   yauzl@3.2.0:
     dependencies:

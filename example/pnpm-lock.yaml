@@ -20,8 +20,8 @@ packages:
   csv-parse@5.6.0:
     resolution: {integrity: sha512-l3nz3euub2QMg5ouu5U09Ew9Wf6/wQ8I++ch1loQ0ljmzhmfZYrH9fflS22i/PQEvsPvxCwxgz5q7UB8K1JO4Q==}
 
-  fast-xml-parser@5.2.3:
-    resolution: {integrity: sha512-OdCYfRqfpuLUFonTNjvd30rCBZUneHpSQkCqfaeWQ9qrKcl6XlWeDBNVwGb+INAIxRshuN2jF+BE0L6gbBO2mw==}
+  fast-xml-parser@5.2.5:
+    resolution: {integrity: sha512-pfX9uG9Ki0yekDHx2SiuRIyFdyAr1kMIMitPvb0YBo8SUfKvia7w7FIyd/l6av85pFYRhZscS75MwMnbvY+hcQ==}
     hasBin: true
 
   pend@1.2.0:
@@ -44,7 +44,7 @@ snapshots:
 
   csv-parse@5.6.0: {}
 
-  fast-xml-parser@5.2.3:
+  fast-xml-parser@5.2.5:
     dependencies:
       strnum: 2.1.1
 
@@ -53,7 +53,7 @@ snapshots:
   skiz-parser@file:..:
     dependencies:
       csv-parse: 5.6.0
-      fast-xml-parser: 5.2.3
+      fast-xml-parser: 5.2.5
       yauzl: 3.2.0
 
   strnum@2.1.1: {}

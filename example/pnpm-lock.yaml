@@ -17,8 +17,8 @@ packages:
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
 
-  csv-parse@6.0.0:
-    resolution: {integrity: sha512-6aB9WrymEruVDwQOwa5AuYk4/Gb+HaJgLHGKOA9BXTqgsIFvbdHzQzZOuqNCOooTGciPDaHzTlGkU5P6kYVUYw==}
+  csv-parse@6.1.0:
+    resolution: {integrity: sha512-CEE+jwpgLn+MmtCpVcPtiCZpVtB6Z2OKPTr34pycYYoL7sxdOkXDdQ4lRiw6ioC0q6BLqhc6cKweCVvral8yhw==}
 
   fast-xml-parser@5.2.5:
     resolution: {integrity: sha512-pfX9uG9Ki0yekDHx2SiuRIyFdyAr1kMIMitPvb0YBo8SUfKvia7w7FIyd/l6av85pFYRhZscS75MwMnbvY+hcQ==}
@@ -42,7 +42,7 @@ snapshots:
 
   buffer-crc32@0.2.13: {}
 
-  csv-parse@6.0.0: {}
+  csv-parse@6.1.0: {}
 
   fast-xml-parser@5.2.5:
     dependencies:
@@ -52,7 +52,7 @@ snapshots:
 
   skiz-parser@file:..:
     dependencies:
-      csv-parse: 6.0.0
+      csv-parse: 6.1.0
       fast-xml-parser: 5.2.5
       yauzl: 3.2.0
 

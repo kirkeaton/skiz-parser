@@ -5,7 +5,7 @@ Basic working example of skiz-parser
 ## Requirements
 
 - `pnpm`
-- Node.js >= 18
+- Node.js >= 20
 
 ## Prerequisites
 

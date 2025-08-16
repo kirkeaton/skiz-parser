@@ -22,8 +22,8 @@ importers:
         specifier: 1.0.5
         version: 1.0.5
       '@kirkeaton/semantic-release-config':
-        specifier: 1.0.4
-        version: 1.0.4
+        specifier: 1.0.5
+        version: 1.0.5
       '@kirkeaton/tsconfig':
         specifier: 1.0.3
         version: 1.0.3
@@ -219,8 +219,8 @@ packages:
   '@kirkeaton/prettier-config@1.0.5':
     resolution: {integrity: sha512-1qTt9JF2M7geisH+Hk16aQWgYxxXFX5I3CvW5qFp8ipJ72ru93qK0bpsIhfiiXnKZS9FL3DC+cj+JCoPu3S7vg==}
 
-  '@kirkeaton/semantic-release-config@1.0.4':
-    resolution: {integrity: sha512-OEXHcxMXWg2olZu8azP+QMpSkNTOhBFfiAbcIpH3mEQlvI9hgwXhJayNvsp7rPfpIOBKgvGImXdPjv+QdEq2Lw==}
+  '@kirkeaton/semantic-release-config@1.0.5':
+    resolution: {integrity: sha512-dnDclfj+81ont5HhTiAo2bSmDr7fM1CG6JgVjpyh+DFfSbpBSvgh30/kGqZg4qGhw93T9En3DwgrUDHP57HiDw==}
 
   '@kirkeaton/tsconfig@1.0.3':
     resolution: {integrity: sha512-FLIuPvOzjJ7Evugpp5bzW10oWQedVDsL1iVapO+9qrITP2CdePGDgOv9a5uc36i/kwlSHNlq0DPyAmBAHiaAEA==}
@@ -1504,7 +1504,7 @@ snapshots:
 
   '@kirkeaton/prettier-config@1.0.5': {}
 
-  '@kirkeaton/semantic-release-config@1.0.4': {}
+  '@kirkeaton/semantic-release-config@1.0.5': {}
 
   '@kirkeaton/tsconfig@1.0.3': {}
 

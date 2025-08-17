@@ -52,10 +52,13 @@
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"
   },
   "scripts": {
-    "build": "pnpm clean && tsc -p tsconfig.build.json",
+    "build": "pnpm clean && tsc",
     "clean": "rm -rf dist",
+    "format": "prettier \"**/*.{js,json,md,ts}\" --write",
+    "lint": "prettier \"**/*.{js,json,md,ts}\" --check",
     "prepublishOnly": "pnpm build",
-    "test": "tsx --test"
+    "test": "tsx --test",
+    "typecheck": "tsc --noEmit"
   },
   "type": "module"
 }

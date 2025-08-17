@@ -1,3 +1,4 @@
 {
-  "extends": "@kirkeaton/tsconfig"
+  "extends": "@kirkeaton/tsconfig",
+  "include": ["src"]
 }

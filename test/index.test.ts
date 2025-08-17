@@ -4,7 +4,7 @@ import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
-import { parseSkizFile } from '../src/index.js';
+import { parseSkizFile } from '../src/index.ts';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 const filename = path.join(dirname, '../example.skiz');

@@ -29,7 +29,7 @@ packages:
 
   skiz-parser@file:..:
     resolution: {directory: .., type: directory}
-    engines: {node: '>=18'}
+    engines: {node: '>=20'}
 
   strnum@2.1.1:
     resolution: {integrity: sha512-7ZvoFTiCnGxBtDqJ//Cu6fWtZtc7Y3x+QOirG15wztbdngGSkht27o2pyGWrVy0b4WAy3jbKmnoK6g5VlVNUUw==}

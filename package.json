@@ -18,7 +18,7 @@
     "@types/node": "22.18.1",
     "@types/yauzl": "2.10.3",
     "prettier": "3.6.2",
-    "semantic-release": "24.2.7",
+    "semantic-release": "24.2.8",
     "typescript": "5.9.2"
   },
   "engines": {

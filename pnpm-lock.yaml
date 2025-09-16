@@ -28,8 +28,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0(typescript@5.9.2)
       '@types/node':
-        specifier: 22.18.3
-        version: 22.18.3
+        specifier: 22.18.4
+        version: 22.18.4
       '@types/yauzl':
         specifier: 2.10.3
         version: 2.10.3
@@ -168,8 +168,8 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
-  '@types/node@22.18.3':
-    resolution: {integrity: sha512-gTVM8js2twdtqM+AE2PdGEe9zGQY4UvmFjan9rZcVb6FGdStfjWoWejdmy4CfWVO9rh5MiYQGZloKAGkJt8lMw==}
+  '@types/node@22.18.4':
+    resolution: {integrity: sha512-UJdblFqXymSBhmZf96BnbisoFIr8ooiiBRMolQgg77Ea+VM37jXw76C2LQr9n8wm9+i/OvlUlW6xSvqwzwqznw==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1355,7 +1355,7 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
-  '@types/node@22.18.3':
+  '@types/node@22.18.4':
     dependencies:
       undici-types: 6.21.0
 
@@ -1363,7 +1363,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.18.3
+      '@types/node': 22.18.4
 
   agent-base@7.1.4: {}
 

@@ -15,7 +15,7 @@
     "@kirkeaton/prettier-config": "1.0.5",
     "@kirkeaton/semantic-release-config": "1.1.0",
     "@kirkeaton/tsconfig": "2.1.0",
-    "@types/node": "22.18.13",
+    "@types/node": "24.9.2",
     "@types/yauzl": "2.10.3",
     "prettier": "3.6.2",
     "semantic-release": "25.0.1",

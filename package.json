@@ -40,7 +40,7 @@
     "skiz"
   ],
   "license": "BSD-3-Clause",
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.21.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild"

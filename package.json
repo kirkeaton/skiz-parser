@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@kirkeaton/prettier-config": "1.0.5",
-    "@kirkeaton/semantic-release-config": "1.1.0",
+    "@kirkeaton/semantic-release-config": "2.0.0",
     "@kirkeaton/tsconfig": "2.1.0",
     "@types/node": "24.10.1",
     "@types/yauzl": "2.10.3",

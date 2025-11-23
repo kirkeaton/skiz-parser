@@ -29,6 +29,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Release package
-        run: pnpm semantic-release --ci
+        run: pnpm semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

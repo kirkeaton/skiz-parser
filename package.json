@@ -13,12 +13,10 @@
   },
   "devDependencies": {
     "@kirkeaton/prettier-config": "1.0.5",
-    "@kirkeaton/semantic-release-config": "2.0.0",
     "@kirkeaton/tsconfig": "2.1.0",
     "@types/node": "24.10.4",
     "@types/yauzl": "2.10.3",
     "prettier": "3.7.4",
-    "semantic-release": "25.0.2",
     "typescript": "5.9.3"
   },
   "engines": {
@@ -40,22 +38,16 @@
     "skiz"
   ],
   "license": "BSD-3-Clause",
-  "packageManager": "pnpm@10.26.2",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kirkeaton/skiz-parser.git"
   },
   "scripts": {
-    "build": "pnpm clean && tsc",
+    "build": "npm run clean && tsc",
     "clean": "rm -rf dist",
     "format": "prettier \"**/*.{js,json,md,ts}\" --write",
     "lint": "prettier \"**/*.{js,json,md,ts}\" --check",
-    "prepublishOnly": "pnpm build",
+    "prepublishOnly": "npm run build",
     "test": "node --test",
     "typecheck": "tsc --noEmit"
   },

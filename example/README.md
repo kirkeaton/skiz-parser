@@ -4,15 +4,14 @@ Basic working example of skiz-parser
 
 ## Requirements
 
-- `pnpm`
 - Node.js >= 20
 
 ## Prerequisites
 
-- Install dependencies by running `pnpm install`
+- Install dependencies by running `npm install`
 
 ## Running
 
 ```bash
-$ pnpm start
+$ npm run start
 ```

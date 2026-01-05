@@ -39,4 +39,4 @@ jobs:
         run: npm run test
       - if: ${{ matrix.node-version == 24 }}
         name: Check for packaging errors
-        uses: kirkeaton/action-publint@d1a4f82ae22224426628517b57eb49528d1074e1 # v2.0.5
+        uses: kirkeaton/action-publint@dad44412a6834a8c77f31d33ccd3c70c31bcd280 # v2.0.6

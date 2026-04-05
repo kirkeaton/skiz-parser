@@ -1,4 +1,7 @@
 {
   "extends": "@kirkeaton/tsconfig",
+  "compilerOptions": {
+    "types": ["node"]
+  },
   "include": ["src"]
 }

@@ -9,7 +9,7 @@
   "dependencies": {
     "csv-parse": "6.2.1",
     "fast-xml-parser": "5.5.9",
-    "yauzl": "3.2.1"
+    "yauzl": "3.3.0"
   },
   "devDependencies": {
     "@kirkeaton/prettier-config": "1.0.6",

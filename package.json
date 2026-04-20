@@ -16,8 +16,8 @@
     "@kirkeaton/tsconfig": "2.2.2",
     "@types/node": "24.12.2",
     "@types/yauzl": "2.10.3",
-    "prettier": "3.8.2",
-    "typescript": "6.0.2"
+    "prettier": "3.8.3",
+    "typescript": "6.0.3"
   },
   "engines": {
     "node": ">=20"

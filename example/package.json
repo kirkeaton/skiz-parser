@@ -7,7 +7,7 @@
     "skiz-parser": "file:.."
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "exports": "./index.js",
   "license": "BSD-3-Clause",

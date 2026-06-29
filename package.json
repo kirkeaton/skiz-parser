@@ -14,7 +14,7 @@
   "devDependencies": {
     "@kirkeaton/prettier-config": "2.0.0",
     "@kirkeaton/tsconfig": "3.0.0",
-    "@types/node": "25.9.3",
+    "@types/node": "25.9.4",
     "@types/yauzl": "3.4.0",
     "prettier": "3.8.4",
     "typescript": "6.0.3"
